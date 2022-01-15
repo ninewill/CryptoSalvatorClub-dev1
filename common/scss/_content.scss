@@ -1,0 +1,324 @@
+@charset "UTF-8";
+@import "./utils/_utils.scss";
+
+// * ==========================================================================
+// * 主要內容區域（#main 裡面的基本樣式）
+// * ==========================================================================
+
+#main {
+  padding-top: 100px;
+  padding-bottom: 100px;
+	background-color: $color-blue1;
+	background-image: url("../images/visual-bg.jpg");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+  background-size: 86.125rem;
+  //background-image: linear-gradient(180deg, #e0c3fc 0%, #8ec5fc 100%);
+  position: relative;
+
+  // 單頁式網站的主要內容區塊
+  &.anchor-main {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.grid-bg{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: url("../images/icon/grid.svg");
+	-webkit-mask-image: linear-gradient(to bottom, transparent, black);
+}
+
+// * ==========================================================================
+// * 頁面外圍控制整體布局寬度
+// * ==========================================================================
+
+.wrap {
+  width: calc(100% - 40px);
+  max-width: 1300px;
+  margin: auto;
+}
+
+// * ==========================================================================
+// * 標題
+// * ==========================================================================
+
+.title-zone {
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  font-size: 2.5rem;
+  font-weight: bold;
+
+  > span {
+    display: block;
+  }
+
+  @at-root html[lang="en"] & {
+    letter-spacing: 0px;
+
+    @include min-width(768px) {
+      font-size: 3rem;
+    }
+  }
+
+  @include min-width(768px) {
+    font-size: 3rem;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 100px;
+      height: 2px;
+      display: inline-block;
+      vertical-align: middle;
+      background-color: $color-white;
+    }
+
+    &::before {
+      margin-right: 20px;
+    }
+
+    &::after {
+      margin-left: 20px;
+    }
+  }
+
+  @include max-width(767px) {
+    margin-top: 0px;
+  }
+}
+
+.block-revealer__content {
+  color: $color-white;
+}
+
+// * ==========================================================================
+// * 功能按鈕區塊
+// * ==========================================================================
+
+.navbar {
+  display: none;
+
+  @include min-width(1025px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+  }
+}
+
+.features {
+  display: flex;
+
+  @at-root .no-js & {
+    display: none;
+  }
+}
+
+.external-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+
+
+// * ==========================================================================
+// * 字級縮放
+// * ==========================================================================
+
+.fontsize {
+  display: flex;
+  align-items: center;
+
+  @include exclude-content {
+    list-style: none;
+    padding-left: 0px;
+    margin-bottom: 0px;
+  }
+}
+
+.fontsize-btn {
+  width: 45px;
+  height: 45px;
+  display: block;
+  margin-left: 10px;
+  border-radius: 100%;
+  text-decoration: none;
+  color: $color-white;
+  background: {
+    color: $color-coral;
+    repeat: no-repeat;
+    position: center;
+    size: contain;
+  }
+
+  @include hidetext;
+
+  &.fontsize-btn-plus {
+    background-image: url("../images/icon/font-plus.svg");
+  }
+
+  &.fontsize-btn-dec {
+    background-image: url("../images/icon/font-dec.svg");
+  }
+}
+
+// * ==========================================================================
+// * 內文區塊
+// * ==========================================================================
+
+#content {
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 5;
+  font-size: 1.25rem;
+  line-height: 1.8em;
+  color: $color-primary-2;
+  letter-spacing: 0.5px;
+
+  @at-root html[lang="en"] & {
+    letter-spacing: 0px;
+  }
+
+  p {
+    //color: inherit;
+		color: $color-gray;
+    text-align: justify;
+
+    @at-root html[lang="en"] & {
+      text-align: left;
+    }
+
+    @at-root html[lang="ja"] & {
+      text-align: justify;
+    }
+  }
+
+  ul {
+    list-style: disc;
+    margin-bottom: 1rem;
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: 2em;
+    margin-bottom: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: {
+      left: auto;
+      right: auto;
+      // bottom: 1rem;
+    }
+  }
+}
+
+.list-title{
+  display: block;
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  @include min-width(767px){
+    display: inline-block;
+
+  }
+}
+
+// 內文注意事項
+.precautions{
+
+  .precautions-item{
+    width: 100%;
+    padding: 2rem;
+    border: 3px solid $color-white;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.269);
+
+    .precautions-item-title{
+      margin-top: 0;
+    }
+
+    .precautions-list{
+      padding-left: 2rem;
+
+      li{
+        color: $color-white;
+        list-style: none;
+  
+        &::before{
+          content: "\25C6";
+          font-weight: 700;
+          padding-right: 10px;
+        }
+      }
+    }
+
+    .precautions-list2{
+      padding-left: 2rem;
+
+      li{
+        display: flex;
+        list-style: none;
+        color: $color-white;
+  
+        &::before{
+          content: "\25C7";
+          font-weight: 700;
+          padding-right: 10px;
+        }
+
+        >span{
+          color: $color-white;
+          display: block;
+          margin-right: 1rem;
+        }
+        >figure{
+          width: 100px;
+        }
+      }
+    }
+  }
+}
+
+// * ==========================================================================
+// * 單頁式網站的區塊
+// * ==========================================================================
+
+.section {
+  margin-top: 5rem;
+  outline: none;
+}
+
+#section-1 {
+  background-color: $color-white;
+}
+
+#section-2 {
+  background-color: $color-primary-3;
+}
+
+#section-3 {
+  background-color: $color-white;
+}
+
+#section-4 {
+  background-color: $color-primary-3;
+}
+
+

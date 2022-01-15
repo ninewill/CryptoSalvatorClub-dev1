@@ -1,0 +1,124 @@
+@charset "UTF-8";
+@import "./utils/_utils.scss";
+
+// * ==========================================================================
+// * 表格
+// * ==========================================================================
+
+table {
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    @include max-width(1024px) {
+        font-size: 1.125rem;
+    }
+
+    @include max-width(767px) {
+        font-size: 1rem;
+    }
+
+    tr {
+        th, td {
+            padding: 15px 5px;
+            vertical-align: middle;
+
+            @include min-width(768px) {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            @include max-width(767px) {
+                font-size: 0.9rem;
+                line-height: 1.4em;
+            }
+
+            &:nth-child(3) {
+                text-align: left;
+            }
+
+            &:nth-child(5) {
+                display: none;
+
+                @include min-width(768px) {
+                    display: table-cell;
+                }
+            }
+
+            // 英文版
+            @at-root html[lang="en"] & {
+                width: 33%;
+
+                &:nth-child(3) {
+                    text-align: center;
+                }
+            }
+        }
+
+        th {
+            background-color: $color-primary-2;
+            color: $color-white;
+            vertical-align: top;
+
+            @include max-width(767px) {
+                word-break: keep-all;
+            }
+        }
+    }
+
+    tbody {
+        text-align: center;
+
+        tr:nth-child(even) {
+            background-color: $color-white;
+        }
+    }
+}
+
+/*
+ * ==========================================================================
+ * 表格（Footable）
+ * ==========================================================================
+ */
+
+.footable {
+    tr {
+        th, td {
+            &:nth-child(1) {
+                text-align: left;
+            }
+
+            &:nth-child(3) {
+                text-align: center;
+            }
+        }
+    }
+
+    .footable-row-detail-name {
+        padding-bottom: 10px;
+    }
+
+    .footable-row-detail-value {
+        padding-bottom: 10px;
+    }
+}
+
+/*
+ * ==========================================================================
+ * 表格（Spantable，手機版有左右滾動條的那種）
+ * ==========================================================================
+ */
+
+.spantable-wrap {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.spantable {
+    width: 768px;
+
+    @include min-width(768px) {
+        width: 100%;
+    }
+}

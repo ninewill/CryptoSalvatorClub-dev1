@@ -1,0 +1,95 @@
+.animate-item {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: 0;
+  display: none;
+  @include min-width(768px) {
+    display: block;
+  }
+  // background-image: url('../images/animate/earth.png');
+  // background-position: 50% 50%;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+
+  > li {
+    position: absolute;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    > img {
+      width: 100%;
+    }
+  }
+}
+
+.boat {
+  width: 250px;
+  height: 200px;
+  background-image: url("../images/animate/boat.png");
+  transform: scale(1);
+
+  @include min-width(768px) {
+    margin-top: 10%;
+    margin-left: 50%;
+  }
+  @include min-width(1024px) {
+    margin-top: 5%;
+    margin-left: 35%;
+  }
+
+  @include max-height(700px) {
+    margin-top: 0%;
+    margin-left: 25%;
+  }
+}
+
+//無限輪播圖片
+.scroll-img {
+  margin-bottom: 100px;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-track {
+  display: flex;
+  width: 200%;
+  animation: bannermove 20s linear infinite;
+
+  > div {
+    width: 100%;
+
+		>ul {
+			display: flex;
+			list-style-type: none;
+			padding-left: 0;
+			margin: 0;
+
+			>li {
+				width: 100%;
+
+				>img{
+					width: 100%;
+					height: 100%;
+					display: block;
+					vertical-align: middle;
+				}
+			}
+		}
+  }
+}
+
+
+@keyframes bannermove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
